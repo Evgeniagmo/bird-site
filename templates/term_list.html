@@ -6,6 +6,8 @@
 
 {% block page-lead %}
 Все термины извлекаются из БД/файла и динамически вставляются в таблицу.
+{{ slug1 }}
+{{ slug2 }}
 {% endblock %}
 
 {% block content %}
@@ -21,11 +23,11 @@
           </thead>
           <tbody>
             {% for cnt, term, definition in terms %}
-            <tr>
-                <td class="py-3">{{ cnt }}</td>
-                <td class="py-3">{{ term }}</td>
-                <td class="py-3">{{ definition }}</td>
-            </tr>
+              <tr>
+                  <td class="py-3">{{ cnt }}</td>
+                  <td class="py-3">{{ term }}</td>
+                  <td class="py-3">{{ definition }}</td>
+              </tr>
             {% endfor %}
           </tbody>
         </table>

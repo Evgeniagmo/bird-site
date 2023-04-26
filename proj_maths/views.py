@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.cache import cache
 from . import terms_work
+import random
 
 
 def index(request):
@@ -10,6 +11,10 @@ def index(request):
 def terms_list(request):
     terms = terms_work.get_terms_for_table()
     return render(request, "term_list.html", context={"terms": terms})
+
+def terms_list_new(request, slug1, slug2):
+    terms = terms_work.get_terms_for_table()
+    return render(request, "term_list.html", context={"terms": terms, "slug1": slug1, "slug2": slug2})
 
 
 def add_term(request):
