@@ -1,4 +1,6 @@
-body  {
+/* https://colorhunt.co/palette/394a517fa99bfbf2d5fdc57b--> */
+
+body {
     display: grid;
     grid-template-areas:
       'pageHeader pageHeader pageHeader pageHeader pageHeader pageHeader'
@@ -6,10 +8,11 @@ body  {
       'mainNav mainNav mainArticle mainArticle mainArticle siteAds'
       'mainNav mainNav mainArticle mainArticle mainArticle siteAds'
       'pageFooter pageFooter pageFooter pageFooter pageFooter pageFooter';
-    gap: 10px;
+    gap: 30px;
     background-color: #FBF2D5;
-    padding: 10px;
-  }
+    padding: 30px;
+}
+
 
 body > footer {
   background-color: rgba(253, 197, 123, 1.0);
