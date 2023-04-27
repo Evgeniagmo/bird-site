@@ -23,5 +23,6 @@ urlpatterns = [
     path('terms-list/<slug:slug1>/<slug:slug2>/', views.terms_list_new),
     path('add-term', views.add_term),
     path('send-term', views.send_term),
-    path('stats', views.show_stats)
+    path('stats', views.show_stats),
+    path('test', views.show_test)
 ]

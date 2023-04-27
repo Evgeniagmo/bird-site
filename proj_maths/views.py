@@ -17,6 +17,10 @@ def terms_list_new(request, slug1, slug2):
     return render(request, "term_list.html", context={"terms": terms, "slug1": slug1, "slug2": slug2})
 
 
+def show_test(request):
+    return render(request, "test.html")
+
+
 def add_term(request):
     return render(request, "term_add.html")
 
