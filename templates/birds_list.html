@@ -1,0 +1,38 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Список птычек
+{% endblock %}
+
+{% block page-lead %}
+Все птычки извлекаются из БД/файла и динамически вставляются в таблицу.
+{{ slug1 }}
+{{ slug2 }}
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="birds-table">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">#</th>
+              <th scope="col" class="py-3">Птычка</th>
+              <th scope="col" class="py-3">На латыни</th>
+              <th scope="col" class="py-3">Количество наблюдений</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cnt, bird, latin, number in birds %}
+              <tr>
+                  <td class="py-3">{{ cnt }}</td>
+                  <td class="py-3">{{ bird }}</td>
+                  <td class="py-3">{{ latin }}</td>
+                  <td class="py-3">{{ number }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}

@@ -2,43 +2,45 @@ from django.shortcuts import render, redirect
 from django.core.cache import cache
 from . import terms_work
 from . import quiz
+from . models import Russianbirds
+from . import birds_db
 
 
 def index(request):
     return render(request, "index.html")
 
 
-def terms_list(request):
-    terms = terms_work.get_terms_for_table()
-    return render(request, "term_list.html", context={"terms": terms})
+def birds_list(request):
+    birds = birds_db.db_get_birds_for_table()
+    return render(request, "birds_list.html", context={"birds": birds})
 
 
-def add_term(request):
-    return render(request, "term_add.html")
+def add_bird(request):
+    return render(request, "bird_add.html")
 
 
-def send_term(request):
+def send_bird(request):
     if request.method == "POST":
         cache.clear()
         user_name = request.POST.get("name")
-        new_term = request.POST.get("new_term", "")
-        new_definition = request.POST.get("new_definition", "").replace(";", ",")
+        new_bird = request.POST.get("new_bird", "")
+        new_location = request.POST.get("new_location", "").replace(";", ",")
         context = {"user": user_name}
-        if len(new_definition) == 0:
+        if len(new_location) == 0:
             context["success"] = False
-            context["comment"] = "Описание должно быть не пустым"
-        elif len(new_term) == 0:
+            context["comment"] = "Локация должна быть указана"
+        elif len(new_bird) == 0:
             context["success"] = False
-            context["comment"] = "Термин должен быть не пустым"
+            context["comment"] = "Птычка должна быть указана"
         else:
             context["success"] = True
-            context["comment"] = "Ваш термин принят"
-            terms_work.write_term(new_term, new_definition)
+            context["comment"] = "Ваше наблюдение зафиксировано"
+            birds_db.db_add_observation(new_bird, new_location)
         if context["success"]:
             context["success-title"] = ""
-        return render(request, "term_request.html", context)
+        return render(request, "bird_request.html", context)
     else:
-        add_term(request)
+        add_bird(request)
 
 
 def show_stats(request):

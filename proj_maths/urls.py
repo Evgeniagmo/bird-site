@@ -20,9 +20,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('terms-list', views.terms_list),
-    path('add-term', views.add_term),
-    path('send-term', views.send_term),
+    path('birds-list', views.birds_list),
+    path('add-bird', views.add_bird),
+    path('send-bird', views.send_bird),
     path('stats', views.show_stats),
     path('test', views.show_test),
     path('quiz', views.start_quiz),

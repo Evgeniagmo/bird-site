@@ -12,11 +12,10 @@ class Russianbirds(models.Model):
     species_id = models.AutoField(primary_key=True)
     species_name = models.TextField()
     genus_name = models.TextField(blank=True, null=True)
+    aka = models.TextField(null=True)
     latin = models.TextField(blank=True, null=True)
     habitat = models.TextField(blank=True, null=True)
-    observer = models.TextField(blank=True, null=True)
     observation_number = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'RussianBirds'
