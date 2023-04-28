@@ -48,7 +48,7 @@ def send_bird(request):
 
 
 def show_stats(request):
-    stats = terms_work.get_terms_stats()
+    stats = birds_db.db_get_birds_stats()
     return render(request, "stats.html", stats)
 
 def show_test(request):

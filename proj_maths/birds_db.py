@@ -34,6 +34,23 @@ def db_add_observation(new_bird, new_location, user_name, user_email):
                                 location=new_location,
                                 date=datetime.now().date())
 
+def db_get_birds_stats():
+    db_birds = Russianbirds.objects.count()-Russianbirds.objects.filter(observation_number=None).count()
+    db_observers = Observers.objects.count()
+    db_observations = Observations.objects.count()
+    db_observations_today = Observations.objects.filter(date=datetime.now().date()).count()
+    birds_all = Russianbirds.objects.all()
+    birds_all_count = [bird.observation_number for bird in birds_all if bird.observation_number is not None]
+    stats = {
+        "birds_all": db_birds,
+        "observers_all": db_observers,
+        "observations_all": db_observations,
+        "observations_today": db_observations_today,
+        "birds_max": max(birds_all_count),
+        "birds_min": min(birds_all_count),
+    }
+    return stats
+
 """
 def db_write_term(new_term, new_definition):
     term = Terms(term=new_term, definition=new_definition)

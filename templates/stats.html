@@ -1,7 +1,7 @@
 {% extends "base_page.html" %}
 
 {% block page-title %}
-Статистика по терминам
+Статистика по птычкам и наблюдениям
 {% endblock %}
 
 {% block page-lead %}
@@ -12,36 +12,41 @@
 {% block content %}
 <div class="container px-4 py-5" id="stats">
     <div>
-        <h3 class="py-2">Количество терминов</h3>
+        <h3 class="py-2">Количество всего разного</h3>
     </div>
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>{{ terms_all }}</h4>
-            <p class="text-muted">всего</p>
+            <h4>{{ birds_all }}</h4>
+            <p class="text-muted">видов увиденных птычек</p>
         </div>
         <div class="col-md-4">
-            <h4>{{ terms_own }}</h4>
-            <p class="text-muted">изначально бывших в базе</p>
+            <h4>{{ observers_all }}</h4>
+            <p class="text-muted">бердвотчеров</p>
         </div>
         <div class="col-md-4">
-            <h4>{{ terms_added }}</h4>
-            <p class="text-muted">добавленных через <a href="/add-term">форму добавления термина</a></p>
+            <h4>{{ observations_all }}</h4>
+            <p class="text-muted">всех наблюдений, добавленных через <a href="/add-bird">форму добавления птычки</a></p>
         </div>
     </div>
     <div>
-        <h3 class="py-2">Описания</h3>
+        <h3 class="py-2">Сегодняшняя статистика</h3>
     </div>
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>{{ words_avg }}</h4>
-            <p class="text-muted">слов в среднем</p>
+            <h4>{{ observations_today }}</h4>
+            <p class="text-muted">наблюдений сегодня</p>
         </div>
+    </div>
+    <div>
+        <h3 class="py-2">Наиболее и наименее часто встречаемые птычки</h3>
+    </div>
+    <div class="row text-center">
         <div class="col-sm-4">
-            <h4>{{ words_max }}</h4>
+            <h4>{{ birds_max }}</h4>
             <p class="text-muted">максимум</p>
         </div>
         <div class="col-sm-4">
-            <h4>{{ words_min }}</h4>
+            <h4>{{ birds_min }}</h4>
             <p class="text-muted">минимум</p>
         </div>
     </div>
