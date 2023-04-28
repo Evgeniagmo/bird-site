@@ -1,18 +1,19 @@
 from . import terms_work
-from random import choices
+from . import birds_db
+from random import sample
 
 
 class Quiz:
     def __init__(self):
-        random_terms = choices(terms_work.get_terms_for_table(), k=5)  #TODO: вынести количество вопросов в .env
+        random_birds = sample(birds_db.db_get_birds_for_table(), k=5)  #TODO: вынести количество вопросов в .env
 
         self.qna = []
         cnt = 0
-        for rt in random_terms:
+        for rb in random_birds:
             qna_item = []
             cnt += 1
             qna_item.append(cnt)
-            qna_item = qna_item + rt[1:]
+            qna_item = qna_item + rb[1:3]
             self.qna.append(qna_item)
 
         self.user_answers = []
@@ -27,6 +28,6 @@ class Quiz:
     def check_quiz(self):
         """Проверяет ответы и возвращает список эмодзи"""
         correct_answers = [qna_item[2] for qna_item in self.qna]
-        answers_true_false = [i == j for i, j in zip(self.user_answers, correct_answers)]
+        answers_true_false = [i.lower() == j.lower() for i, j in zip(self.user_answers, correct_answers)]
         answers_emoji = [str(atf).replace('False', '❌').replace('True', '✅') for atf in answers_true_false]
         return answers_emoji

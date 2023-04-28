@@ -48,6 +48,13 @@
         <button type="submit" class="btn btn-primary" formaction="/check-quiz">Проверить</button>
         </form>
         {% endif %}
+        {% if not quiz_start %}
+        <h2 class="pb-2 border-bottom">Что теперь делать?</h2>
+        <ul>
+                <li>попробовать <a href="/quiz">ещё раз</a>,</li>
+                <li>вернуться на <a href="/">главную</a></li>
+        </ul>
+        {% endif %}
         {% if messages %}
         {% for message in messages %}
             {{ message }}
