@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',  # Чтобы начать использовать сессии, выполните python manage.py migrate --run-syncdb
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,5 @@
-from proj_maths.models import Russianbirds
+from datetime import datetime
+from proj_maths.models import Russianbirds, Observations, Observers
 
 def db_get_birds_for_table():
     birds = []
@@ -6,14 +7,32 @@ def db_get_birds_for_table():
         birds.append([i+1, item.species_name, item.latin, item.observation_number])
     return birds
 
-def db_add_observation(new_bird, new_location):
+def db_add_observation(new_bird, new_location, user_name, user_email):
+    curr_species_id = 0
     for item in Russianbirds.objects.filter(species_name__exact=new_bird):
+        curr_species_id = item.species_id
         if item.observation_number is None:
             item.observation_number = 1
         else:
             item.observation_number += 1
         item.save()
 
+    curr_observer_id = 0
+    if Observers.objects.filter(observer_email__exact=user_email).count() == 0:
+        Observers.objects.create(observer_name=user_name,
+                                 observer_email=user_email)
+    for item in Observers.objects.filter(observer_email__exact=user_email):
+        curr_observer_id = item.observer_id
+        if item.observation_count is None:
+            item.observation_count = 1
+        else:
+            item.observation_count += 1
+        item.save()
+
+    Observations.objects.create(observer_id=curr_observer_id,
+                                species_id=curr_species_id,
+                                location=new_location,
+                                date=datetime.now().date())
 
 """
 def db_write_term(new_term, new_definition):

@@ -23,7 +23,8 @@ def send_bird(request):
     if request.method == "POST":
         cache.clear()
         user_name = request.POST.get("name")
-        new_bird = request.POST.get("new_bird", "")
+        user_email = request.POST.get("email")
+        new_bird = request.POST.get("new_bird", "").lower()
         new_location = request.POST.get("new_location", "").replace(";", ",")
         context = {"user": user_name}
         if len(new_location) == 0:
@@ -32,10 +33,13 @@ def send_bird(request):
         elif len(new_bird) == 0:
             context["success"] = False
             context["comment"] = "Птычка должна быть указана"
+        elif Russianbirds.objects.filter(species_name__exact=new_bird).count() == 0:
+            context["success"] = False
+            context["comment"] = "Такой птычки нет("
         else:
             context["success"] = True
             context["comment"] = "Ваше наблюдение зафиксировано"
-            birds_db.db_add_observation(new_bird, new_location)
+            birds_db.db_add_observation(new_bird, new_location, user_name, user_email)
         if context["success"]:
             context["success-title"] = ""
         return render(request, "bird_request.html", context)
