@@ -8,22 +8,15 @@
 from django.db import models
 
 
-class Category(models.Model):
-    name = models.TextField(blank=True, null=True)
-    parent = models.IntegerField(blank=True, null=True)
-    pkey = models.AutoField(primary_key=True, blank=True, null=False)
+class Russianbirds(models.Model):
+    species_id = models.AutoField(primary_key=True)
+    species_name = models.TextField()
+    genus_name = models.TextField(blank=True, null=True)
+    latin = models.TextField(blank=True, null=True)
+    habitat = models.TextField(blank=True, null=True)
+    observer = models.TextField(blank=True, null=True)
+    observation_number = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        db_table = 'Category'
-
-
-class Expense(models.Model):
-    amount = models.IntegerField(blank=True, null=True)
-    category = models.IntegerField(blank=True, null=True)
-    expense_date = models.TextField(blank=True, null=True)
-    added_date = models.TextField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
-    pkey = models.AutoField(primary_key=True, blank=True, null=False)
-
-    class Meta:
-        db_table = 'Expense'
+        managed = False
+        db_table = 'RussianBirds'
