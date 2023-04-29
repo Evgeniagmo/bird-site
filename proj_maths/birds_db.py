@@ -1,11 +1,13 @@
 from datetime import datetime
 from proj_maths.models import Russianbirds, Observations, Observers
 
+
 def db_get_birds_for_table():
     birds = []
     for i, item in enumerate(Russianbirds.objects.all()):
-        birds.append([i+1, item.species_name, item.latin, item.observation_number])
+        birds.append([i + 1, item.species_name, item.latin, item.observation_number])
     return birds
+
 
 def db_add_observation(new_bird, new_location, user_name, user_email):
     curr_species_id = 0
@@ -34,8 +36,9 @@ def db_add_observation(new_bird, new_location, user_name, user_email):
                                 location=new_location,
                                 date=datetime.now().date())
 
+
 def db_get_birds_stats():
-    db_birds = Russianbirds.objects.count()-Russianbirds.objects.filter(observation_number=None).count()
+    db_birds = Russianbirds.objects.count() - Russianbirds.objects.filter(observation_number=None).count()
     db_observers = Observers.objects.count()
     db_observations = Observations.objects.count()
     db_observations_today = Observations.objects.filter(date=datetime.now().date()).count()
@@ -51,25 +54,20 @@ def db_get_birds_stats():
     }
     return stats
 
-"""
-def db_write_term(new_term, new_definition):
-    term = Terms(term=new_term, definition=new_definition)
-    term_addition = TermAuthors(termid=term.termid, termsource="user")
-    term.save()
-    term_addition.save()
 
-def db_get_terms_stats():
-    db_terms = len(TermAuthors.objects.filter(termsource="db"))
-    user_terms = len(TermAuthors.objects.filter(termsource="user"))
-    terms = Terms.objects.all()
-    defin_len = [len(term.definition) for term in terms]
-    stats = {
-        "terms_all": db_terms + user_terms,
-        "terms_own": db_terms,
-        "terms_added": user_terms,
-        "words_avg": sum(defin_len)/len(defin_len),
-        "words_max": max(defin_len),
-        "words_min": min(defin_len)
-    }
-    return stats
-"""
+def db_get_description(bird_name):
+    bird_info = {"bird_species": bird_name}
+    for item in Russianbirds.objects.filter(species_name__exact=bird_name):
+        bird_info["bird_genus"] = item.genus_name
+        bird_info["bird_latin"] = item.latin
+        bird_info["bird_habitat"] = item.habitat
+        if item.aka is None:
+            bird_info["bird_aka"] = "-"
+        else:
+            bird_info["bird_aka"] = item.aka
+        if item.observation_number is None:
+            bird_info["bird_is_seen"] = False
+        else:
+            bird_info["bird_is_seen"] = True
+
+    return bird_info

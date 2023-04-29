@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container px-4 py-5" id="terms-table">
+<div class="container px-4 py-5" id="birds-table">
     <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -20,10 +20,10 @@
             </tr>
           </thead>
           <tbody>
-            {% for cnt, term, definition in terms %}
+            {% for cnt, bird, latin in birds %}
             <tr>
                 <td class="py-3">{{ cnt }}</td>
-                <td class="py-3">{{ term }}</td>
+                <td class="py-3">{{ bird }}</td>
                 <td class="py-3">
                     {% if quiz_start %}
                     <form method="post">
@@ -32,10 +32,10 @@
                     {% endif %}
                     {% if not quiz_start %}
                         {% load index %}
-                        {% if definition != answers|index:forloop.counter0 %}
-                             <s>{{ answers|index:forloop.counter0 }}</s> {{ definition }}
+                        {% if latin != answers|index:forloop.counter0 %}
+                             <s>{{ answers|index:forloop.counter0 }}</s> {{ latin }}
                         {% else %}
-                            {{ definition }}
+                            {{ latin }}
                         {% endif %}
                         {{ marks|index:forloop.counter0 }}
                     {% endif %}
@@ -51,8 +51,9 @@
         {% if not quiz_start %}
         <h2 class="pb-2 border-bottom">Что теперь делать?</h2>
         <ul>
-                <li>попробовать <a href="/quiz">ещё раз</a>,</li>
-                <li>вернуться на <a href="/">главную</a></li>
+            <li>попробовать <a href="/quiz">ещё раз</a>,</li>
+            <li>заглянуть в <a href="/get-info">справочник</a>,</li>
+            <li>вернуться на <a href="/">главную</a></li>
         </ul>
         {% endif %}
         {% if messages %}

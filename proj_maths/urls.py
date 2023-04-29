@@ -24,7 +24,8 @@ urlpatterns = [
     path('add-bird', views.add_bird),
     path('send-bird', views.send_bird),
     path('stats', views.show_stats),
-    path('test', views.show_test),
     path('quiz', views.start_quiz),
     path('check-quiz', views.check_quiz),
+    path('get-info', views.get_info),
+    path('show-info', views.show_info),
 ]

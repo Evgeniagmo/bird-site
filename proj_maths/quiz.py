@@ -1,11 +1,10 @@
-from . import terms_work
 from . import birds_db
-from random import sample
+from random import choices
 
 
 class Quiz:
     def __init__(self):
-        random_birds = sample(birds_db.db_get_birds_for_table(), k=5)  #TODO: вынести количество вопросов в .env
+        random_birds = choices(birds_db.db_get_birds_for_table(), k=5)  #TODO: вынести количество вопросов в .env
 
         self.qna = []
         cnt = 0

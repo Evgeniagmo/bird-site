@@ -1,0 +1,61 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+{% if success %}
+Птычка найдена
+{% else %}
+Ошибка в запросе
+{% endif %}
+{% endblock %}
+
+{% block page-lead %}{% endblock %}
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="bird-show-info">
+    <h2 class="pb-2 border-bottom">Результат запроса</h2>
+    <p>Уважаемый пользователь,<br/>
+        Ваш запрос завершился <span class="fw-bold">{% if success %}успешно{% else %}ошибкой{% endif %}</span>.
+    </p>
+
+    <h2 class="pb-2 border-bottom">Комментарий</h2>
+    <p>{{ comment }}</p>
+
+    {% if success %}
+    <div class="col-md-4">
+        <p class="text-muted">вид птычки</p>
+        <h4>{{ bird_species }}</h4>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-muted">as known as</p>
+        <h4>{{ bird_aka }}</h4>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-muted">род птычки</p>
+        <h4>{{ bird_genus }}</h4>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-muted">на латыни</p>
+        <h4>{{ bird_latin }}</h4>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-muted">где обитает</p>
+        <h4>{{ bird_habitat }}</h4>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-muted">встречалась ли уже</p>
+        <h4>{% if bird_is_seen %}Птычка уже встречалась{% else %}Птычка еще не встречалась{% endif %}</h4>
+    </div>
+    {% endif %}
+
+    <h2 class="pb-2 border-bottom">Что можно сделать?</h2>
+    <ul>
+        <li>спросить <a href="/get-info">ещё раз</a>,</li>
+        <li>вернуться на <a href="/">главную</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.cache import cache
 from . import terms_work
 from . import quiz
-from . models import Russianbirds
+from .models import Russianbirds
 from . import birds_db
 
 
@@ -51,8 +51,10 @@ def show_stats(request):
     stats = birds_db.db_get_birds_stats()
     return render(request, "stats.html", stats)
 
+
 def show_test(request):
     return render(request, "test.html")
+
 
 """Глобальная переменная, в которой хранится словарь:
 ключи -- ключи сессий, значения -- объекты Quiz."""
@@ -70,20 +72,49 @@ def start_quiz(request):
         quizzes = dict()
         quizzes[request.session.session_key] = quiz.Quiz()
 
-    return render(request, "quiz.html", context={"terms": quizzes[request.session.session_key].qna,
+    return render(request, "quiz.html", context={"birds": quizzes[request.session.session_key].qna,
                                                  "quiz_start": True})
 
 
 def check_quiz(request):
     if request.method == "POST":
         global quizzes
-        for i in range(1, 5+1):  #TODO: вынести количество вопросов в .env
-            quizzes[request.session.session_key]\
+        for i in range(1, 5 + 1):  # TODO: вынести количество вопросов в .env
+            quizzes[request.session.session_key] \
                 .record_user_answer(request.POST.get("answer" + "-" + str(i)))
         answers = quizzes[request.session.session_key].get_user_answers()
         marks = quizzes[request.session.session_key].check_quiz()
-        return render(request, "quiz.html", context={"terms": quizzes[request.session.session_key].qna,
+        return render(request, "quiz.html", context={"birds": quizzes[request.session.session_key].qna,
                                                      "quiz_start": False,
                                                      "answers": answers,
                                                      "marks": marks})
     return redirect("/quiz")
+
+
+def get_info(request):
+    return render(request, "get_info.html")
+
+
+def show_info(request):
+    if request.method == "POST":
+        cache.clear()
+        bird_name = request.POST.get("bird", "").lower()
+        context = {"bird_species": bird_name}
+        bird_info = {}
+        if len(bird_name) == 0:
+            context["success"] = False
+            context["comment"] = "Птычка должна быть указана"
+        elif Russianbirds.objects.filter(species_name__exact=bird_name).count() == 0:
+            context["success"] = False
+            context["comment"] = "Такой птычки нет("
+        else:
+            context["success"] = True
+            context["comment"] = "Такая птычка найдена"
+            bird_info = birds_db.db_get_description(bird_name)
+        if context["success"]:
+            context["success-title"] = ""
+        for k, v in bird_info.items():
+            context[k] = v
+        return render(request, "show_info.html", context)
+    else:
+        get_info(request)
