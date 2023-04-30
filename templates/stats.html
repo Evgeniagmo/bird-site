@@ -42,12 +42,28 @@
     </div>
     <div class="row text-center">
         <div class="col-sm-4">
-            <h4>{{ birds_max }}</h4>
-            <p class="text-muted">максимум</p>
+            {% for bird in birds_max %}
+            <h4>{{ bird }}</h4>
+            {% endfor %}
+            <p class="text-muted">чаще всего</p>
         </div>
         <div class="col-sm-4">
-            <h4>{{ birds_min }}</h4>
-            <p class="text-muted">минимум</p>
+            {% for bird in birds_min %}
+            <h4>{{ bird }}</h4>
+            {% endfor %}
+            <p class="text-muted">реже всего</p>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="py-2">количество наблюдений каждый день</h3>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm-4">
+            {% for day, number in birds_daily %}
+            <h4>{{ day }} : {{ number }}</h4>
+            {% endfor %}
+            <p class="text-muted">ыыыыыыыыы</p>
         </div>
     </div>
 </div>

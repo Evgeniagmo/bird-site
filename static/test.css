@@ -1,55 +1,71 @@
-/* https://colorhunt.co/palette/394a517fa99bfbf2d5fdc57b--> */
+/* CSS HEX
+--moss-green: #8c966fff;
+--almond: #f2d8bfff;
+--seashell: #f8eee9ff;
+--russet: #865337ff;
+--drab-dark-brown: #4e3f18ff;
+--pressed button: #2b2005
+*/
+
+header[class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom rounded-bottom"] {
+    background-color: #8C966F;
+}
+
+div[id="title-box"] {
+    background-color: #f2d8bf;
+}
+
+div[class="col d-flex"] {
+    background-color: #f2d8bf;
+    width: 100%;
+}
+
+div[class="p-5 mb-4 rounded-3"] {
+    background-color: #f2d8bf;
+    width: 100%;
+}
+
+div[itemtype="nav-item"] {
+    background-color: #865337;
+}
+
+li[class="nav-item"] {
+    padding: 2px;
+}
+
+h2[class="pb-2 border-bottom"] {
+    --bs-border-width: 5px;
+    --bs-border-color: #865337;
+}
+
+tr[id="birds-list-table-heading"] {
+    background-color: #865337;
+    color: white;
+}
+
+a[class="btn btn-primary"] {
+    background-color: #4e3f18;
+    --bs-btn-border-color: #4e3f18;
+    --bs-btn-active-bg: #2b2005;
+    --bs-btn-active-border-color: #2b2005;
+    --bs-btn-hover-bg: #2b2005;
+    --bs-btn-hover-border-color: #2b2005;
+}
+
+button[type="submit"] {
+    background-color: #4e3f18;
+    --bs-btn-border-color: #4e3f18;
+    --bs-btn-active-bg: #2b2005;
+    --bs-btn-active-border-color: #2b2005;
+    --bs-btn-hover-bg: #2b2005;
+    --bs-btn-hover-border-color: #2b2005;
+}
 
 body {
-    display: grid;
-    grid-template-areas:
-      'pageHeader pageHeader pageHeader pageHeader pageHeader pageHeader'
-      'mainNav mainNav mainArticle mainArticle mainArticle siteAds'
-      'mainNav mainNav mainArticle mainArticle mainArticle siteAds'
-      'mainNav mainNav mainArticle mainArticle mainArticle siteAds'
-      'pageFooter pageFooter pageFooter pageFooter pageFooter pageFooter';
-    gap: 30px;
-    background-color: #FBF2D5;
-    padding: 30px;
+    background-color: #f8eee9ff;
 }
 
-
-body > footer {
-  background-color: rgba(253, 197, 123, 1.0);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-body > div {
-  background-color: rgba(158, 200, 186, 1.0);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+footer {
+    background-color: #8C966F;
 }
 
-body > header {
-  background-color: rgba(57, 74, 81, 1.0);
-  color: #FBF2D5;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-
-body > nav {
-  background-color: rgba(127, 169, 155, 1.0);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-
-body > article {
-  background-color: #FBF2D5;
-  text-align: left;
-  padding: 40px 0;
-  font-size: 20px;
-}
-  #pageHeader { grid-area: pageHeader; }
-  #mainArticle { grid-area: mainArticle; }
-  #mainNav { grid-area: mainNav; }
-  #siteAds { grid-area: siteAds; }
-  #pageFooter { grid-area: pageFooter; }
