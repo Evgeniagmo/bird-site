@@ -11,9 +11,9 @@
 {% block content %}
 <div class="container px-4 py-5" id="birds-table">
     <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr id="birds-list-table-heading">
               <th scope="col" class="py-3">#</th>
               <th scope="col" class="py-3">Вопрос</th>
               <th scope="col" class="py-3">Ответ</th>
@@ -32,12 +32,12 @@
                     {% endif %}
                     {% if not quiz_start %}
                         {% load index %}
-                        {% if latin != answers|index:forloop.counter0 %}
-                             <s>{{ answers|index:forloop.counter0 }}</s> {{ latin }}
+                        {% if not marks|index:forloop.counter0 %}
+                            <s>{{ answers|index:forloop.counter0 }}</s>
+                            <p>Правильный ответ: {{ latin }}</p>
                         {% else %}
                             {{ latin }}
                         {% endif %}
-                        {{ marks|index:forloop.counter0 }}
                     {% endif %}
                 </td>
             </tr>
@@ -49,6 +49,9 @@
         </form>
         {% endif %}
         {% if not quiz_start %}
+        <p></p>
+        <h2 class="pb-2">Ваш результат: {{ mark }} из {{ q_number }}. {{ mark_str }}</h2>
+        <p></p>
         <h2 class="pb-2 border-bottom">Что теперь делать?</h2>
         <ul>
             <li>попробовать <a href="/quiz">ещё раз</a>,</li>

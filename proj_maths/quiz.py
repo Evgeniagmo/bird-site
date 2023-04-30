@@ -28,5 +28,4 @@ class Quiz:
         """Проверяет ответы и возвращает список эмодзи"""
         correct_answers = [qna_item[2] for qna_item in self.qna]
         answers_true_false = [i.lower() == j.lower() for i, j in zip(self.user_answers, correct_answers)]
-        answers_emoji = [str(atf).replace('False', '❌').replace('True', '✅') for atf in answers_true_false]
-        return answers_emoji
+        return answers_true_false

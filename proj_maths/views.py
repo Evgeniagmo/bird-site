@@ -79,15 +79,30 @@ def start_quiz(request):
 def check_quiz(request):
     if request.method == "POST":
         global quizzes
-        for i in range(1, 5 + 1):  # TODO: вынести количество вопросов в .env
+        q_number = 5
+        for i in range(1, q_number + 1):  # TODO: вынести количество вопросов в .env
             quizzes[request.session.session_key] \
                 .record_user_answer(request.POST.get("answer" + "-" + str(i)))
         answers = quizzes[request.session.session_key].get_user_answers()
         marks = quizzes[request.session.session_key].check_quiz()
+        answers_count = [atf for atf in marks if atf == True]
+        mark = len(answers_count)
+        mark_str = ""
+        if 0 < mark/q_number < 0.33333:
+            mark_str = "Так себе("
+        elif 0.33333 <= mark/q_number < 0.66667:
+            mark_str = "Неплохо"
+        elif 0.66667 <= mark/q_number < 1:
+            mark_str = "Класс!"
+        else:
+            mark_str = "Превосходно!"
         return render(request, "quiz.html", context={"birds": quizzes[request.session.session_key].qna,
                                                      "quiz_start": False,
                                                      "answers": answers,
-                                                     "marks": marks})
+                                                     "marks": marks,
+                                                     "mark": mark,
+                                                     "q_number": q_number,
+                                                     "mark_str": mark_str})
     return redirect("/quiz")
 
 

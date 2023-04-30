@@ -38,6 +38,10 @@ h2[class="pb-2 border-bottom"] {
     --bs-border-color: #865337;
 }
 
+tbody, td, tfoot, th, thead, tr {
+    border-style: hidden;
+}
+
 tr[id="birds-list-table-heading"] {
     background-color: #865337;
     color: white;
