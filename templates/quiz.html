@@ -34,7 +34,7 @@
                         {% load index %}
                         {% if not marks|index:forloop.counter0 %}
                             <s>{{ answers|index:forloop.counter0 }}</s>
-                            <p>Правильный ответ: {{ latin }}</p>
+                            <p><span class="fst-italic">Правильный ответ: {{ latin }}</span></p>
                         {% else %}
                             {{ latin }}
                         {% endif %}

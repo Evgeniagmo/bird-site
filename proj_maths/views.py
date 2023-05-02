@@ -52,9 +52,6 @@ def show_stats(request):
     return render(request, "stats.html", stats)
 
 
-def show_test(request):
-    return render(request, "test.html")
-
 
 """Глобальная переменная, в которой хранится словарь:
 ключи -- ключи сессий, значения -- объекты Quiz."""
@@ -88,7 +85,7 @@ def check_quiz(request):
         answers_count = [atf for atf in marks if atf == True]
         mark = len(answers_count)
         mark_str = ""
-        if 0 < mark/q_number < 0.33333:
+        if 0 <= mark/q_number < 0.33333:
             mark_str = "Так себе("
         elif 0.33333 <= mark/q_number < 0.66667:
             mark_str = "Неплохо"

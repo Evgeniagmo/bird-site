@@ -9,112 +9,138 @@
 {% endblock %}
 
 {% block content %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+{% load static %}
+<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'accordion.css' %}" rel="stylesheet">
+<link href="{% static 'test.css' %}" rel="stylesheet">
 <div class="container px-4 py-5" id="project-contents">
-    <h2 class="pb-2 border-bottom">Что есть в этом проекте</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col d-flex">
-            <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3" itemtype="nav-item">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
+    <section id="topics">
+        <div class="container-md">
+            <div class="text-center">
+                <h2>Чем тут можно заниматься</h2>
+                <p class="lead text-muted">Список активностей про птычек</p>
             </div>
-            <div>
-                <h4 class="fs-4">Список птычек</h4>
-                <p>Простая страница с контентом, который разложен в таблицу. Содержимое таблицы находится в базе данных.</p>
-                <a href="/birds-list" class="btn btn-primary">Посмотреть</a>
-                <p></p>
+
+            <div class="row my-2 justify-content-around align-items-center">
+                <div class="col-1 col-lg-1 my-2">
+                    <img src="{% static 'bird-prints.svg' %}" alt="птичьи следы" width="50" height="50"/>
+                </div>
+
+                <div class="accordion accordion-flush" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Список птычек
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col d-flex">
+                                    <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                        <img src="{% static 'feather-svg-1.svg' %}" alt="список птычек" width="30" height="30"/>
+                                    </div>
+                                    <div>
+                                        <p>Простая страница с контентом, который разложен в таблицу. Содержимое таблицы находится в базе данных.</p>
+                                        <a href="/birds-list" class="btn btn-primary">Посмотреть</a>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Форма для добавления наблюдения
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col d-flex">
+                                    <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                        <img src="{% static 'feather-svg-2.svg' %}" alt="новое наблюдение" width="30" height="30"/>
+                                    </div>
+                                    <div>
+                                        <p>Пример POST-запроса, который отправится после того, как вы заполните форму. Он допишет птычку в базу
+                                        данных, и если всё будет успешно — вас перенаправят на страницу терминов</p>
+                                        <a href="/add-bird" class="btn btn-primary">Заполнить</a>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Статистика
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col d-flex">
+                                    <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                        <img src="{% static 'feather-svg-3.svg' %}" alt="статистика" width="30" height="30"/>
+                                    </div>
+                                    <div>
+                                        <p>Сколько птычек уже есть? Что еще вам надо?</p>
+                                        <a href="/stats" class="btn btn-primary">Изучить</a>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Обучалка
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col d-flex">
+                                    <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                        <img src="{% static 'feather-svg-4.svg' %}" alt="квиз" width="30" height="30"/>
+                                    </div>
+                                    <div>
+                                        <p>Пробуди в себе орнитолога и проверь свои познания в латыни</p>
+                                        <a href="/quiz" class="btn btn-primary">Опозориться</a>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Мини-справочник
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="col d-flex">
+                                    <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                        <img src="{% static 'feather-svg-5.svg' %}" alt="справочник" width="30" height="30"/>
+                                    </div>
+                                    <div>
+                                        <p>Узнать информацию про птычку</p>
+                                        <a href="/get-info" class="btn btn-primary">Просветиться</a>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-        <div class="p-5 mb-4 rounded-3">
-            <div>
-                <h4 class="fs-4">Форма для добавления наблюдения</h4>
-                <p>Пример POST-запроса, который отправится после того, как вы заполните форму. Он допишет птычку в базу
-                    данных, и если всё будет успешно — вас перенаправят на страницу терминов</p>
-                <a href="/add-bird" class="btn btn-primary">Заполнить</a>
-                <p></p>
-            </div>
-        </div>
-        <div class="col d-flex">
-            <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3" itemtype="nav-item">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h4 class="fs-4">Статистика</h4>
-                <p>Сколько птычек уже есть? Что еще вам надо?</p>
-                <a href="/stats" class="btn btn-primary">Изучить</a>
-                <p></p>
-            </div>
-        </div>
-        <div class="col d-flex">
-            <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3" itemtype="nav-item">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h4 class="fs-4">Обучалка</h4>
-                <p>Пробуди в себе орнитолога и проверь свои познания в латыни</p>
-                <a href="/quiz" class="btn btn-primary">Опозориться</a>
-                <p></p>
-            </div>
-        </div>
-        <div class="col d-flex">
-            <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3" itemtype="nav-item">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h4 class="fs-4">Мини-справочник</h4>
-                <p>Узнать информацию про птычку</p>
-                <a href="/get-info" class="btn btn-primary">Просветиться</a>
-                <p></p>
-            </div>
-        </div>
-    </div>
-    <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-        <div class="col-lg-4">
-            <h4 class="py-1">Добавить ещё одну форму</h4>
-        </div>
-        <div class="col-lg-8">
-            <p>Чтобы получить максимальную оценку по проекту, нужно две страницы, которые <span class="fst-italic">показывают</span>
-            контент, а две страницы, которые <span class="fst-italic">принимают</span> контент. Одна страница с
-            POST-запросом создана — это <a href="/add-term">форма сбора терминов</a>. Добавьте ещё одну форму и view, обрабатывающий её!</p>
-        </div>
-    </div>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-        <div class="col-lg-4">
-            <h4 class="py-1">Разнообразить контент</h4>
-        </div>
-        <div class="col-lg-8">
-            <p>Этот проект — про математику. В условии проекта в курсе — иностранные языки. Измените содержимое страниц,
-                чтобы они были полезны в контексте изучения иностранного языка (несколько примеров есть в описании проекта).</p>
-        </div>
-    </div>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-        <div class="col-lg-4">
-            <h4 class="py-1">Изменить вёрстку и/или дизайн-систему</h4>
-        </div>
-        <div class="col-lg-8">
-            <p>Этот проект использует <a href="https://getbootstrap.com">Bootstrap</a>. Попробуйте другие дизайн-системы, например:
-                <ul>
-                    <li><a href="https://materializecss.com">Materialize</a></li>
-                    <li><a href="https://semantic-ui.com">Semantic UI</a></li>
-                    <li><a href="https://get.foundation/templates.html">Foundation</a></li>
-                </ul>
-            </p>
-            <p>
-                Если же вам хочется оставить Bootstrap — измените вёрстку! Добавьте картинок, замените стили — словом, пробудите
-                внутреннего художника.
-            </p>
-            <p>
-                <span class="fst-italic">Вариант улучшения:</span> как правило, у сайта есть фавикон — маленькая иконка, отображающаяся
-                рядом с названием сайта во вкладке или окне браузера. Сейчас её нет — но вы можете её добавить.
-            </p>
-        </div>
-    </div>
+    </section>
 </div>
 {% endblock %}

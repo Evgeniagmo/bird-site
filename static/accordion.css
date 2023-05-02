@@ -1,0 +1,26 @@
+.accordion-button {
+    font-size: inherit;
+}
+
+.accordion-item {
+    border: 2px solid #865337;
+}
+
+.accordion-button:not(.collapsed) {
+    color: inherit;
+    background: #865337;
+    color: white;
+    border: 0px;
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0%) invert(100%);
+}
+
+.accordion-button:focus {
+    box-shadow: inherit;
+}
+
+.accordion-body {
+    background: #f2d8bf;
+}

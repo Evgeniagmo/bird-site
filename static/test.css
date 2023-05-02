@@ -34,7 +34,7 @@ li[class="nav-item"] {
 }
 
 h2[class="pb-2 border-bottom"] {
-    --bs-border-width: 5px;
+    --bs-border-width: 2px;
     --bs-border-color: #865337;
 }
 
@@ -65,11 +65,33 @@ button[type="submit"] {
     --bs-btn-hover-border-color: #2b2005;
 }
 
+footer {
+    background-color: #8c966fff;
+}
+
+div[id="project-contents"] {
+    background-color: #f8eee9ff;
+}
+
 body {
     background-color: #f8eee9ff;
 }
 
-footer {
-    background-color: #8C966F;
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: #f8eee9;
+    --bs-body-bg:  #f8eee9;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: #8c966f;
+}
