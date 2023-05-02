@@ -1,6 +1,6 @@
+import os
 from django.shortcuts import render, redirect
 from django.core.cache import cache
-from . import terms_work
 from . import quiz
 from .models import Russianbirds
 from . import birds_db
@@ -52,7 +52,6 @@ def show_stats(request):
     return render(request, "stats.html", stats)
 
 
-
 """Глобальная переменная, в которой хранится словарь:
 ключи -- ключи сессий, значения -- объекты Quiz."""
 global quizzes
@@ -76,8 +75,8 @@ def start_quiz(request):
 def check_quiz(request):
     if request.method == "POST":
         global quizzes
-        q_number = 5
-        for i in range(1, q_number + 1):  # TODO: вынести количество вопросов в .env
+        q_number = int(os.getenv("QUIZ_Q_NUMBER"))
+        for i in range(1, q_number + 1):
             quizzes[request.session.session_key] \
                 .record_user_answer(request.POST.get("answer" + "-" + str(i)))
         answers = quizzes[request.session.session_key].get_user_answers()
@@ -85,11 +84,11 @@ def check_quiz(request):
         answers_count = [atf for atf in marks if atf == True]
         mark = len(answers_count)
         mark_str = ""
-        if 0 <= mark/q_number < 0.33333:
+        if 0 <= mark / q_number < 0.33333:
             mark_str = "Так себе("
-        elif 0.33333 <= mark/q_number < 0.66667:
+        elif 0.33333 <= mark / q_number < 0.66667:
             mark_str = "Неплохо"
-        elif 0.66667 <= mark/q_number < 1:
+        elif 0.66667 <= mark / q_number < 1:
             mark_str = "Класс!"
         else:
             mark_str = "Превосходно!"

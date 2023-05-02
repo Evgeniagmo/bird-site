@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block page-lead %}
-<img src="{% static 'feather-svg-2.svg' %}" alt="новое наблюдение" width="50" height="50>
+<img src="{% static 'feather-svg-2.svg' %}" alt="новое наблюдение" width="50" height="50">
 {% endblock %}
 
 {% block content %}
@@ -20,9 +20,11 @@
     <p>{{ comment }}</p>
 
     <h2 class="pb-2 border-bottom">Что можно сделать?</h2>
-    <ul>
-        <li>заполнить <a href="/add-bird">форму</a> ещё раз,</li>
-        <li>вернуться на <a href="/">главную</a></li>
-    </ul>
+    <div class="col-md-4">
+        <p><img src="{% static 'feather-svg-2.svg' %}" alt="справочник" width="20" height="20"/>
+            заполнить <a href="/add-bird">форму</a> ещё раз,</p>
+        <p><img src="{% static 'bird-prints.svg' %}" alt="справочник" width="20" height="20"/>
+            вернуться на <a href="/">главную</a></p>
+    </div>
 </div>
 {% endblock %}

@@ -55,11 +55,14 @@
         <h2 class="pb-2">Ваш результат: {{ mark }} из {{ q_number }}. {{ mark_str }}</h2>
         <p></p>
         <h2 class="pb-2 border-bottom">Что теперь делать?</h2>
-        <ul>
-            <li>попробовать <a href="/quiz">ещё раз</a>,</li>
-            <li>заглянуть в <a href="/get-info">справочник</a>,</li>
-            <li>вернуться на <a href="/">главную</a></li>
-        </ul>
+        <div class="col-md-4">
+            <p><img src="{% static 'feather-svg-4.svg' %}" alt="справочник" width="20" height="20"/>
+                попробовать <a href="/quiz">ещё раз</a>,</p>
+            <p><img src="{% static 'feather-svg-5.svg' %}" alt="справочник" width="20" height="20"/>
+                заглянуть в <a href="/get-info">справочник</a>,</p>
+            <p><img src="{% static 'bird-prints.svg' %}" alt="справочник" width="20" height="20"/>
+                вернуться на <a href="/">главную</a></p>
+        </div>
         {% endif %}
         {% if messages %}
         {% for message in messages %}
