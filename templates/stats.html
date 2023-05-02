@@ -13,59 +13,56 @@
 
 {% block content %}
 <div class="container px-4 py-5" id="stats">
-    <div>
-        <h3 class="py-2">Количество всего разного</h3>
+    <div class="text-center my-3">
+        <h2 class="pb-2 border-bottom">Статистика по наблюдениям</h2>
     </div>
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>{{ birds_all }}</h4>
-            <p class="text-muted">видов увиденных птычек</p>
-        </div>
-        <div class="col-md-4">
-            <h4>{{ observers_all }}</h4>
             <p class="text-muted">бердвотчеров</p>
+            <h4>{{ observers_all }}</h4>
         </div>
         <div class="col-md-4">
-            <h4>{{ observations_all }}</h4>
             <p class="text-muted">всех наблюдений, добавленных через <a href="/add-bird">форму добавления птычки</a></p>
+            <h4>{{ observations_all }}</h4>
         </div>
+        <div class="col-md-4">
+            <p class="text-muted">наблюдений сегодня</p>
+            <h4>{{ observations_today }}</h4>
+        </div>
+
+
     </div>
-    <div>
-        <h3 class="py-2">Сегодняшняя статистика</h3>
+    <div class="text-center my-3">
+        <h2 class="pb-2 border-bottom">Статистика по птычкам</h2>
     </div>
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>{{ observations_today }}</h4>
-            <p class="text-muted">наблюдений сегодня</p>
-        </div>
-    </div>
-    <div>
-        <h3 class="py-2">Наиболее и наименее часто встречаемые птычки</h3>
-    </div>
-    <div class="row text-center">
-        <div class="col-sm-4">
-            {% for bird in birds_max %}
-            <h4>{{ bird }}</h4>
-            {% endfor %}
-            <p class="text-muted">чаще всего</p>
+            <p class="text-muted">видов увиденных птычек</p>
+            <h4>{{ birds_all }}</h4>
         </div>
         <div class="col-sm-4">
+            <p class="text-muted">реже всего</p>
             {% for bird in birds_min %}
             <h4>{{ bird }}</h4>
             {% endfor %}
-            <p class="text-muted">реже всего</p>
+        </div>
+        <div class="col-sm-4">
+            <p class="text-muted">чаще всего</p>
+            {% for bird in birds_max %}
+            <h4>{{ bird }}</h4>
+            {% endfor %}
         </div>
     </div>
 
-    <div>
-        <h3 class="py-2">количество наблюдений каждый день</h3>
+    <div class="row text-center my-3">
+        <h2 class="pb-2 border-bottom">Количество наблюдений каждый день</h2>
     </div>
     <div class="row text-center">
-        <div class="col-sm-4">
+        <div>
+            <p class="text-muted">Тут должен быть график. ыыыыыыыы</p>
             {% for day, number in birds_daily %}
             <h4>{{ day }} : {{ number }}</h4>
             {% endfor %}
-            <p class="text-muted">ыыыыыыыыы</p>
         </div>
     </div>
 </div>
