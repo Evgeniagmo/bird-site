@@ -38,6 +38,20 @@ h2[class="pb-2 border-bottom"] {
     --bs-border-color: #865337;
 }
 
+div[class="row px-5 py-2 border-bottom"] {
+    --bs-border-width: 2px;
+    --bs-border-color: #865337;
+}
+
+input[type=text]:focus {
+    box-shadow: inherit;
+    border: 2px solid #865337;
+}
+
+input[type="text"] {
+  background-color : white;
+}
+
 tfoot, thead, tr {
     border: 2px solid #865337;
 }
@@ -53,6 +67,14 @@ tfoot, thead, tr {
 tr[id="birds-list-table-heading"] {
     background-color: #865337;
     color: white;
+}
+
+.input-group-prepend {
+    background-color: #f8eee9;
+}
+
+.input-group-text {
+    background-color: #f2d8bf;
 }
 
 a[class="btn btn-primary"] {

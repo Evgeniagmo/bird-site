@@ -1,13 +1,13 @@
 {% extends "base_page.html" %}
 
+{% load static %}
 {% block page-title %}
 Список птычек
 {% endblock %}
 
 {% block page-lead %}
-Все птычки извлекаются из БД/файла и динамически вставляются в таблицу.
-{{ slug1 }}
-{{ slug2 }}
+Все птычки извлекаются из БД/файла и динамически вставляются в таблицу. <br/><br/>
+<img src="{% static 'feather-svg-1.svg' %}" alt="список птычек" width="50" height="50"/>
 {% endblock %}
 
 {% block content %}

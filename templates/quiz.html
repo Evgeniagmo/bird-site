@@ -1,11 +1,13 @@
 {% extends "base_page.html" %}
 
+{% load static %}
 {% block page-title %}
 Квиз
 {% endblock %}
 
 {% block page-lead %}
-Вопросы случайным образом генерируются из файла и динамически вставляются в таблицу.
+Вопросы случайным образом генерируются из файла и динамически вставляются в таблицу. <br/><br/>
+<img src="{% static 'feather-svg-4.svg' %}" alt="квиз" width="50" height="50"/>
 {% endblock %}
 
 {% block content %}

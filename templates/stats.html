@@ -1,12 +1,14 @@
 {% extends "base_page.html" %}
 
+{% load static %}
 {% block page-title %}
 Статистика по птычкам и наблюдениям
 {% endblock %}
 
 {% block page-lead %}
 Перед тем, как отрендерить эту страницу, веб-приложение ходит в файл/БД, обновляет статистики, а затем подставляет их в шаблон страницы.
-Всё это можно посмотреть в файле <code>views.py</code>.
+Всё это можно посмотреть в файле <code>views.py</code>. <br/><br/>
+<img src="{% static 'feather-svg-3.svg' %}" alt="статистика" width="50" height="50"/>
 {% endblock %}
 
 {% block content %}
