@@ -38,8 +38,16 @@ h2[class="pb-2 border-bottom"] {
     --bs-border-color: #865337;
 }
 
-tbody, td, tfoot, th, thead, tr {
-    border-style: hidden;
+tfoot, thead, tr {
+    border: 2px solid #865337;
+}
+
+.border-right-0 {
+    border-right: 0!important;
+}
+
+.border-left-0 {
+    border-left: 0!important;
 }
 
 tr[id="birds-list-table-heading"] {
