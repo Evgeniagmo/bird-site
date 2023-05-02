@@ -21,33 +21,27 @@
 
     {% if success %}
     <div class="col-md-4">
-        <p class="text-muted">вид птычки</p>
-        <h4>{{ bird_species }}</h4>
+        <p>Вид птычки: <b>{{ bird_species }}</b></p>
     </div>
 
     <div class="col-md-4">
-        <p class="text-muted">as known as</p>
-        <h4>{{ bird_aka }}</h4>
+        <p>Род птычки: <b>{{ bird_genus }}</b></p>
     </div>
 
     <div class="col-md-4">
-        <p class="text-muted">род птычки</p>
-        <h4>{{ bird_genus }}</h4>
+        <p>Другие названия птычки: <b>{{ bird_aka }}</b></p>
     </div>
 
     <div class="col-md-4">
-        <p class="text-muted">на латыни</p>
-        <h4>{{ bird_latin }}</h4>
+        <p>Название на латыни: <b>{{ bird_latin }}</b></p>
     </div>
 
     <div class="col-md-4">
-        <p class="text-muted">где обитает</p>
-        <h4>{{ bird_habitat }}</h4>
+        <p>Где обитает: <b>{{ bird_habitat }}</b></p>
     </div>
 
     <div class="col-md-4">
-        <p class="text-muted">встречалась ли уже</p>
-        <h4>{% if bird_is_seen %}Птычка уже встречалась{% else %}Птычка еще не встречалась{% endif %}</h4>
+        <p>Встречалась ли уже здешними бердвотчерами: <b>{% if bird_is_seen %}птычка уже встречалась{% else %}птычка еще не встречалась{% endif %}</b></p>
     </div>
     {% endif %}
 
